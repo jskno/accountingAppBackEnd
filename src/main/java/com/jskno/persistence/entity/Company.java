@@ -6,25 +6,25 @@ import javax.persistence.*;
  * Created by Jose on 9/1/2017.
  */
 @Entity
-@Table(name = "companies")
+@Table(name = "COMPANIES")
 public class Company {
     @Id
     @GeneratedValue()
     private Long id;
 
-    @Column(name = "companyname", nullable = false)
+    @Column(name = "COMPANY_NAME", nullable = false)
     private String companyName;
 
-    @Column(name = "cif", nullable = false)
+    @Column(name = "CIF", nullable = false)
     private String cif;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "ADDRESS", nullable = false)
     private String address;
 
-    @Column(name = "telephone", nullable = false)
+    @Column(name = "TELEPHONE", nullable = false)
     private String telephone;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "EMAIL", nullable = false)
     private String email;
 
     public Long getId() {

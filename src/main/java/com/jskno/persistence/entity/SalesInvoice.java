@@ -1,17 +1,17 @@
 package com.jskno.persistence.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Jose on 9/1/2017.
  */
 @Entity
-@Table(name = "sales_invoices")
+@Table(name = "SALES_INVOICES")
 public class SalesInvoice {
 
-    @Column(name = "id", nullable = false)
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     private Long id;
 
     public Long getId() {

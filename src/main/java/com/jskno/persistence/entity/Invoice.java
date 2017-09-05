@@ -10,26 +10,26 @@ import java.time.LocalDate;
  */
 public abstract class Invoice extends AbstractEntity {
 
-    @Column(name = "invoice_number", nullable = false)
+    @Column(name = "INVOICE_NUMBER", nullable = false)
     private String invoiceNumber;
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "DATE", nullable = false)
     private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "company_id", referencedColumnName = "id")
+    @JoinColumn(name = "COMPANY_ID", referencedColumnName = "id")
     private Company company;
 
-    @Column(name = "taxable_base", nullable = false)
+    @Column(name = "TAXABLE_BASE", nullable = false)
     private Integer taxableBase;
 
-    @Column(name = "vat_percentage", nullable = false)
+    @Column(name = "VAT_PERCENTAGE", nullable = false)
     private Integer vatPercentage;
 
-    @Column(name = "vat_amount", nullable = false)
+    @Column(name = "VAT_AMOUNT", nullable = false)
     private Integer vatAmount;
 
-    @Column(name = "total_invoice", nullable = false)
+    @Column(name = "TOTAL_INVOICE", nullable = false)
     private Integer totalInvoice;
 
     public String getInvoiceNumber() {
