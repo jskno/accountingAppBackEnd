@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by Jose on 9/1/2017.
  */
@@ -23,6 +25,12 @@ public class CompanyController {
     @ResponseStatus(value = HttpStatus.CREATED)
     public void createCompany(@RequestBody Company company) {
         this.companyService.createCompany(company);
+    }
+
+    @RequestMapping(path = "/all", method = RequestMethod.GET,
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public List<Company> getCompanies() {
+        return this.companyService.getAllCompanies();
     }
 
 

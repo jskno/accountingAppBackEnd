@@ -3,12 +3,15 @@ package com.jskno.persistence.entity;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  * Created by Jose on 9/3/2017.
  */
-public abstract class Invoice extends AbstractEntity {
+@MappedSuperclass
+public abstract class Invoice extends AbstractEntity implements Serializable {
 
     @Column(name = "INVOICE_NUMBER", nullable = false)
     private String invoiceNumber;

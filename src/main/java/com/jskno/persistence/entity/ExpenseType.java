@@ -1,13 +1,14 @@
 package com.jskno.persistence.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Jose on 9/5/2017.
  */
 @Entity
 @Table(name = "EXPENSE_TYPE")
-public class ExpenseType {
+public class ExpenseType implements Serializable {
 
     @Id
     @GeneratedValue

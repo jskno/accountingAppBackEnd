@@ -1,12 +1,14 @@
 package com.jskno.persistence.entity;
 
-import javax.persistence.Column;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Created by Jose on 9/3/2017.
  */
-public class AbstractEntity {
+@MappedSuperclass
+public abstract class AbstractEntity implements Serializable {
 
     @Column(name = "CREATED_BY_USER")
     private String createdByUser;

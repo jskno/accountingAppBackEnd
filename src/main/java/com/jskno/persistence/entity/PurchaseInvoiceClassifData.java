@@ -1,16 +1,22 @@
 package com.jskno.persistence.entity;
 
+import com.jskno.persistence.entity.compositeid.PurchaseInvClassDataKey;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Jose on 9/3/2017.
  */
 @Entity
 @Table(name = "PURCHASE_INVOICE_CLASS_DATA")
-public class PurchaseInvoiceClassifData {
+public class PurchaseInvoiceClassifData extends AbstractEntity implements Serializable {
 
-    @Column(name = "INVOICE_ID", nullable = false, unique = true)
-    private Long invoiceId;
+    @Id
+    private PurchaseInvClassDataKey purchaseInvClassDataKey;
+
+//    @Column(name = "INVOICE_ID", nullable = false, unique = true)
+//    private Long invoiceId;
 
     @ManyToOne
     @JoinColumn(name = "EXPENSE_TYPE_ID", referencedColumnName = "ID")
@@ -32,22 +38,12 @@ public class PurchaseInvoiceClassifData {
     @Column(name = "AMORTIZATION_ANNUAL_PERCENTAGE")
     private Double amortizationAnnualPercentage;
 
-    private PurchaseInvoice purchaseInvoice;
-
-    public Long getInvoiceId() {
-        return invoiceId;
+    public PurchaseInvClassDataKey getPurchaseInvClassDataKey() {
+        return purchaseInvClassDataKey;
     }
 
-    public void setInvoiceId(Long invoiceId) {
-        this.invoiceId = invoiceId;
-    }
-
-    public PurchaseInvoice getPurchaseInvoice() {
-        return purchaseInvoice;
-    }
-
-    public void setPurchaseInvoice(PurchaseInvoice purchaseInvoice) {
-        this.purchaseInvoice = purchaseInvoice;
+    public void setPurchaseInvClassDataKey(PurchaseInvClassDataKey purchaseInvClassDataKey) {
+        this.purchaseInvClassDataKey = purchaseInvClassDataKey;
     }
 
     public ExpenseType getExpenseType() {
