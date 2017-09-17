@@ -1,5 +1,6 @@
 package com.jskno.persistence.entity;
 
+import com.jskno.persistence.entity.base.AbstractEntity;
 import com.jskno.persistence.entity.compositeid.PurchaseInvClassDataKey;
 
 import javax.persistence.*;

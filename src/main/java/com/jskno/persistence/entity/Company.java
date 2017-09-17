@@ -1,6 +1,13 @@
 package com.jskno.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.jskno.persistence.entity.base.AbstractEntity;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
@@ -8,11 +15,17 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "COMPANIES")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Company extends AbstractEntity implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue()
     private Long id;
 
+    @JsonProperty(value = "name")
     @Column(name = "COMPANY_NAME", nullable = false)
     private String companyName;
 

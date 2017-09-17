@@ -20,17 +20,26 @@ public class CompanyController {
     CompanyService companyService;
 
     @RequestMapping(path = "/new", method = RequestMethod.POST,
-            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, //MediaType.APPLICATION_XML_VALUE
+    })
     @ResponseStatus(value = HttpStatus.CREATED)
     public void createCompany(@RequestBody Company company) {
         this.companyService.createCompany(company);
     }
 
     @RequestMapping(path = "/all", method = RequestMethod.GET,
-            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+            produces = {MediaType.APPLICATION_JSON_VALUE, //MediaType.APPLICATION_XML_VALUE
+            })
     public List<Company> getCompanies() {
         return this.companyService.getAllCompanies();
+    }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET,
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public Company getCompanyById(@PathVariable("id") Long id) {
+        return this.companyService.getCompany(id);
     }
 
 

@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Jose on 9/1/2017.
  */
@@ -26,5 +28,9 @@ public class PurchaseInvoiceService {
     public void updatePurchaseInvoice(PurchaseInvoice purchaseInvoice) { this.purchaseInvoiceRepository.save(purchaseInvoice); }
 
     public void deletePurchaseInvoice(Long id) { this.purchaseInvoiceRepository.delete(id); }
+
+    public List<PurchaseInvoice> getAllPurchaseInvoices() {
+        return this.purchaseInvoiceRepository.findAll();
+    }
 
 }

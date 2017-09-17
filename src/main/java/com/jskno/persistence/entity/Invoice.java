@@ -1,9 +1,9 @@
 package com.jskno.persistence.entity;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
+import com.jskno.persistence.entity.base.AbstractEntity;
+import com.jskno.persistence.utils.LocalDateConverter;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -17,6 +17,7 @@ public abstract class Invoice extends AbstractEntity implements Serializable {
     private String invoiceNumber;
 
     @Column(name = "DATE", nullable = false)
+    @Convert(converter = LocalDateConverter.class)
     private LocalDate date;
 
     @ManyToOne

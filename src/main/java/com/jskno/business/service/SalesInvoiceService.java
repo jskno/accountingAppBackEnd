@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Jose on 9/1/2017.
  */
@@ -27,4 +29,8 @@ public class SalesInvoiceService {
     public void updateSalesInvoice(SalesInvoice salesInvoice) { this.salesInvoiceRepository.save(salesInvoice); }
 
     public void deleteSalesInvoicee(Long id) { this.salesInvoiceRepository.delete(id); }
+
+    public List<SalesInvoice> getAllSalesInvoices() {
+        return this.salesInvoiceRepository.findAll();
+    }
 }
