@@ -29,7 +29,14 @@ public class SalesInvoiceController {
         this.salesInvoiceService.createSalesInvoice(salesInvoice);
     }
 
+    @RequestMapping(path = "all", method = RequestMethod.GET,
+                    produces = {MediaType.APPLICATION_JSON_VALUE})
     public java.util.List<SalesInvoice> getSalesInvoices() {
         return this.salesInvoiceService.getAllSalesInvoices();
     }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET,
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public SalesInvoice getSalesInvoiceById(@PathVariable("id") Long id) { return this.salesInvoiceService.getSalesInvoice(id); }
 }
