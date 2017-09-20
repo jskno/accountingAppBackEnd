@@ -1,5 +1,6 @@
 package com.jskno.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jskno.persistence.entity.base.AbstractEntity;
 import com.jskno.persistence.utils.LocalDateConverter;
 
@@ -24,6 +25,7 @@ public abstract class Invoice extends AbstractEntity implements Serializable {
     @JoinColumn(name = "COMPANY_ID", referencedColumnName = "id")
     private Company company;
 
+    @JsonProperty(value = "amount")
     @Column(name = "TAXABLE_BASE", nullable = false)
     private Integer taxableBase;
 
