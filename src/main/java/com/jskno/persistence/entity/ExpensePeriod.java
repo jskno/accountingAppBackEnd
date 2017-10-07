@@ -1,5 +1,7 @@
 package com.jskno.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -7,14 +9,16 @@ import java.io.Serializable;
  * Created by Jose on 9/5/2017.
  */
 @Entity
-@Table(name = "EXPENSE_PERIOD")
+@Table(name = "EXPENSE_PERIODS")
 public class ExpensePeriod implements Serializable {
 
+    @JsonProperty(value = "key")
     @Id
     @GeneratedValue
     @Column(name = "ID")
     private Long id;
 
+    @JsonProperty(value = "value")
     @Column(name = "DESCRIPTION")
     private String description;
 

@@ -20,6 +20,7 @@ public class PurchaseInvoiceService {
     @Autowired PurchaseInvoiceRepository purchaseInvoiceRepository;
 
     public void createPurchaseInvoice(PurchaseInvoice purchaseInvoice) {
+//        purchaseInvoice.getPurchaseInvoiceClassifData().se
         this.purchaseInvoiceRepository.save(purchaseInvoice);
     }
 

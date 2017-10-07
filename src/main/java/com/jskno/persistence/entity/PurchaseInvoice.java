@@ -1,5 +1,7 @@
 package com.jskno.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -11,9 +13,13 @@ import java.io.Serializable;
 public class PurchaseInvoice extends Invoice implements Serializable {
 
     @Id
-    @GeneratedValue
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private Long id;
+
+    @JsonProperty(value = "purchaseInvClassifData")
+    @OneToOne(mappedBy = "purchaseInvoice", cascade = CascadeType.ALL)
+    private PurchaseInvoiceClassifData purchaseInvoiceClassifData;
 
     public Long getId() {
         return id;
@@ -21,5 +27,14 @@ public class PurchaseInvoice extends Invoice implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public PurchaseInvoiceClassifData getPurchaseInvoiceClassifData() {
+        return purchaseInvoiceClassifData;
+    }
+
+    public void setPurchaseInvoiceClassifData(PurchaseInvoiceClassifData purchaseInvoiceClassifData) {
+        this.purchaseInvoiceClassifData = purchaseInvoiceClassifData;
+        purchaseInvoiceClassifData.setPurchaseInvoice(this);
     }
 }

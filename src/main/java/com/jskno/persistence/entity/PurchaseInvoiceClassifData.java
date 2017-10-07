@@ -1,7 +1,7 @@
 package com.jskno.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jskno.persistence.entity.base.AbstractEntity;
-import com.jskno.persistence.entity.compositeid.PurchaseInvClassDataKey;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,10 +14,9 @@ import java.io.Serializable;
 public class PurchaseInvoiceClassifData extends AbstractEntity implements Serializable {
 
     @Id
-    private PurchaseInvClassDataKey purchaseInvClassDataKey;
-
-//    @Column(name = "INVOICE_ID", nullable = false, unique = true)
-//    private Long invoiceId;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "INVOICE_ID", referencedColumnName = "ID")
+    private PurchaseInvoice purchaseInvoice;
 
     @ManyToOne
     @JoinColumn(name = "EXPENSE_TYPE_ID", referencedColumnName = "ID")
@@ -26,8 +25,8 @@ public class PurchaseInvoiceClassifData extends AbstractEntity implements Serial
     @Column(name = "VAT_APPLICABLE")
     private Boolean vatApplicable;
 
-    @Column(name = "APPLICABLE_TAX_PERCENTAGE")
-    private Double applicableTaxPercentage;
+    @Column(name = "VAT_PERCENTAGE_APPLICABLE")
+    private Double vatPercentageApplicable;
 
     @ManyToOne
     @JoinColumn(name = "EXPENSE_PERIOD_ID", referencedColumnName = "ID")
@@ -36,15 +35,16 @@ public class PurchaseInvoiceClassifData extends AbstractEntity implements Serial
     @Column(name = "AMORTIZATION_POLICY")
     private String amortizationPolicy;
 
-    @Column(name = "AMORTIZATION_ANNUAL_PERCENTAGE")
-    private Double amortizationAnnualPercentage;
+    @JsonProperty(value = "annualAmortPercentage")
+    @Column(name = "ANNUAL_AMORTIZATION_PERCENTAGE")
+    private Double annualAmortizationPercentage;
 
-    public PurchaseInvClassDataKey getPurchaseInvClassDataKey() {
-        return purchaseInvClassDataKey;
+    public PurchaseInvoice getPurchaseInvoice() {
+        return purchaseInvoice;
     }
 
-    public void setPurchaseInvClassDataKey(PurchaseInvClassDataKey purchaseInvClassDataKey) {
-        this.purchaseInvClassDataKey = purchaseInvClassDataKey;
+    public void setPurchaseInvoice(PurchaseInvoice purchaseInvoice) {
+        this.purchaseInvoice = purchaseInvoice;
     }
 
     public ExpenseType getExpenseType() {
@@ -63,12 +63,12 @@ public class PurchaseInvoiceClassifData extends AbstractEntity implements Serial
         this.vatApplicable = vatApplicable;
     }
 
-    public Double getApplicableTaxPercentage() {
-        return applicableTaxPercentage;
+    public Double getVatPercentageApplicable() {
+        return vatPercentageApplicable;
     }
 
-    public void setApplicableTaxPercentage(Double applicableTaxPercentage) {
-        this.applicableTaxPercentage = applicableTaxPercentage;
+    public void setVatPercentageApplicable(Double vatPercentageApplicable) {
+        this.vatPercentageApplicable = vatPercentageApplicable;
     }
 
     public ExpensePeriod getExpensePeriod() {
@@ -87,11 +87,11 @@ public class PurchaseInvoiceClassifData extends AbstractEntity implements Serial
         this.amortizationPolicy = amortizationPolicy;
     }
 
-    public Double getAmortizationAnnualPercentage() {
-        return amortizationAnnualPercentage;
+    public Double getAnnualAmortizationPercentage() {
+        return annualAmortizationPercentage;
     }
 
-    public void setAmortizationAnnualPercentage(Double amortizationAnnualPercentage) {
-        this.amortizationAnnualPercentage = amortizationAnnualPercentage;
+    public void setAnnualAmortizationPercentage(Double annualAmortizationPercentage) {
+        this.annualAmortizationPercentage = annualAmortizationPercentage;
     }
 }

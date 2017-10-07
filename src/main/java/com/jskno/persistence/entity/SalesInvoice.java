@@ -12,7 +12,7 @@ public class SalesInvoice extends Invoice implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "ID")
     private Long id;
 
     public Long getId() {

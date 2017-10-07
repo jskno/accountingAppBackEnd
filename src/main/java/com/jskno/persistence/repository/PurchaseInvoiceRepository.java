@@ -1,6 +1,5 @@
 package com.jskno.persistence.repository;
 
-import com.jskno.persistence.entity.Company;
 import com.jskno.persistence.entity.PurchaseInvoice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
