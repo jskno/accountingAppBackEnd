@@ -24,7 +24,15 @@ public class PurchaseInvoiceController {
                     produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseStatus(value = HttpStatus.CREATED)
     public void createPurchaseInvoice(@RequestBody PurchaseInvoice purchaseInvoice) {
-        this.purchaseInvoiceService.createPurchaseInvoice(purchaseInvoice);
+        if(!invoiceAlreadyExists(purchaseInvoice)) {
+            this.purchaseInvoiceService.createPurchaseInvoice(purchaseInvoice);
+        } else {
+
+        }
+    }
+
+    private boolean invoiceAlreadyExists(PurchaseInvoice purchaseInvoice) {
+        return purchaseInvoiceService.invoiceAlreadyExists(purchaseInvoice);
     }
 
     @RequestMapping(path = "/all", method = RequestMethod.GET,

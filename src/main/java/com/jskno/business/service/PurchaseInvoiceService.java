@@ -34,4 +34,22 @@ public class PurchaseInvoiceService {
         return this.purchaseInvoiceRepository.findAll();
     }
 
+    public boolean invoiceAlreadyExists(PurchaseInvoice purchaseInvoice) {
+        List<PurchaseInvoice> invoices = this.purchaseInvoiceRepository.getPurchaseInvoiceByTotalInvoiceCompanyAndDate(
+                purchaseInvoice.getTotalInvoice(),
+                purchaseInvoice.getCompany(),
+                purchaseInvoice.getDate()
+        );
+        if(invoices.isEmpty()) {
+            return false;
+        } else if (invoices.size() > 1 &&
+                   invoices.stream().filter(invoice ->
+                        invoice.getInvoiceNumber().equals(purchaseInvoice.getInvoiceNumber()))
+                           .findAny().isPresent()) {
+            return true;
+        } else {
+            // WARNING POP UP !!
+            return false;
+        }
+    }
 }

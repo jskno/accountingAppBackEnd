@@ -27,16 +27,16 @@ public abstract class Invoice extends AbstractEntity implements Serializable {
 
     @JsonProperty(value = "amount")
     @Column(name = "TAXABLE_BASE", nullable = false)
-    private Integer taxableBase;
+    private Double taxableBase;
 
     @Column(name = "VAT_PERCENTAGE", nullable = false)
-    private Integer vatPercentage;
+    private Double vatPercentage;
 
     @Column(name = "VAT_AMOUNT", nullable = false)
-    private Integer vatAmount;
+    private Double vatAmount;
 
     @Column(name = "TOTAL_INVOICE", nullable = false)
-    private Integer totalInvoice;
+    private Double totalInvoice;
 
     public String getInvoiceNumber() {
         return invoiceNumber;
@@ -62,35 +62,35 @@ public abstract class Invoice extends AbstractEntity implements Serializable {
         this.company = company;
     }
 
-    public Integer getTaxableBase() {
+    public Double getTaxableBase() {
         return taxableBase;
     }
 
-    public void setTaxableBase(Integer taxableBase) {
+    public void setTaxableBase(Double taxableBase) {
         this.taxableBase = taxableBase;
     }
 
-    public Integer getVatPercentage() {
+    public Double getVatPercentage() {
         return vatPercentage;
     }
 
-    public void setVatPercentage(Integer vatPercentage) {
+    public void setVatPercentage(Double vatPercentage) {
         this.vatPercentage = vatPercentage;
     }
 
-    public Integer getVatAmount() {
+    public Double getVatAmount() {
         return vatAmount;
     }
 
-    public void setVatAmount(Integer vatAmount) {
+    public void setVatAmount(Double vatAmount) {
         this.vatAmount = vatAmount;
     }
 
-    public Integer getTotalInvoice() {
+    public Double getTotalInvoice() {
         return totalInvoice;
     }
 
-    public void setTotalInvoice(Integer totalInvoice) {
+    public void setTotalInvoice(Double totalInvoice) {
         this.totalInvoice = totalInvoice;
     }
 }
