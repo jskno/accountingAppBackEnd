@@ -40,4 +40,11 @@ public class PurchaseInvoiceController {
     public List<PurchaseInvoice> getPurchaseInvoices() {
         return this.purchaseInvoiceService.getAllPurchaseInvoices();
     }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET,
+        consumes = {MediaType.APPLICATION_JSON_VALUE},
+        produces = {MediaType.APPLICATION_JSON_VALUE})
+    public PurchaseInvoice getPurchaseInvoiceById(@PathVariable("id") Long id) {
+        return this.purchaseInvoiceService.getPurchaseInvoice(id);
+    }
 }

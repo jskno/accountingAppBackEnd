@@ -1,5 +1,6 @@
 package com.jskno.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jskno.persistence.entity.base.AbstractEntity;
 
@@ -16,6 +17,7 @@ public class PurchaseInvoiceClassifData extends AbstractEntity implements Serial
     @Id
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "INVOICE_ID", referencedColumnName = "ID")
+    @JsonIgnore
     private PurchaseInvoice purchaseInvoice;
 
     @ManyToOne
