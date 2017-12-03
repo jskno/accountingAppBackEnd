@@ -22,7 +22,7 @@ public abstract class Invoice extends AbstractEntity implements Serializable {
     private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "COMPANY_ID", referencedColumnName = "id")
+    @JoinColumn(name = "COMPANY_ID", referencedColumnName = "ID")
     private Company company;
 
     @JsonProperty(value = "amount")
