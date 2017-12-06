@@ -1,0 +1,2 @@
+INSERT INTO companies (`id`, `cif`, `company_name`, `email`, `telephone`, `address`, `created_at`, `created_by_user` ,  `updated_at`, `updated_by_user`)
+VALUES (1, 'A23535234', 'Petromix', 'petromix@gmail.com', '968212121', 'Casillas', now(), 'system', now(), 'system');
